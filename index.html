@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS B-SPINE - Experiential Business School | Best MBA in Coimbatore</title>
+    <link rel="icon" type="image/png" href="./images/bschool.png">
+    <meta name="description"
+        content="SNS B-SPINE: India's first Design Thinking based MBA programme. Building entrepreneurial mindset through 3P Culture, 5 Pillars, and SPINE infrastructure.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sns-yellow': '#F4B400',
+                        'sns-yellow-light': '#FEF3C7',
+                        'sns-brown': '#8B4513',
+                        'sns-brown-light': '#F5E6D3',
+                        'sns-grey': '#6B7280',
+                        'sns-bg': '#f7f9fa',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .stat-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(244, 180, 0, 0.15);
+        }
+
+        .program-card {
+            transition: all 0.2s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+        }
+
+        .carousel-item {
+            flex-shrink: 0;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .infinite-scroll {
+            display: flex;
+            animation: scroll 40s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-160px * 10 - 24px * 10));
+            }
+        }
+
+        .infinite-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-container-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        /* Floating Buttons */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .insta-float {
+            position: fixed;
+            bottom: 94px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-float:hover,
+        .insta-float:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .whatsapp-float,
+            .insta-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                right: 20px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+            }
+
+            .insta-float {
+                bottom: 80px;
+            }
+        }
+
+        /* Bitrix Form Reset */
+        .b24-form-wrapper,
+        .b24-form-content.b24-form-padding-side,
+        .b24-window-popup,
+        .b24-window-scrollable {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .b24-form-header {
+            text-align: center !important;
+            padding: 24px 20px 16px !important;
+        }
+
+        .b24-form-header-title {
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            color: #111 !important;
+        }
+
+        .b24-form-field {
+            margin-bottom: 20px !important;
+        }
+
+        .b24-form-control-label {
+            position: absolute !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .b24-form-control {
+            width: 100% !important;
+            background: #fbf3f2 !important;
+            border: 1px solid #f0d1cc !important;
+            border-radius: 12px !important;
+            padding: 16px 18px !important;
+            font-size: 16px !important;
+            color: #6f6a69 !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .b24-form-control::placeholder {
+            color: #7a7473 !important;
+            font-weight: 500;
+        }
+
+        .b24-form-control:focus {
+            border-color: #e3b6af !important;
+            background: #fbf3f2 !important;
+        }
+
+        .b24-form-control[readonly] {
+            cursor: pointer !important;
+        }
+
+        .b24-form-separator,
+        .b24-form-field-separator,
+        .b24-form-field::before,
+        .b24-form-field::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .b24-form-btn {
+            width: 100% !important;
+            padding: 16px !important;
+            font-size: 17px !important;
+            border-radius: 12px !important;
+            background: #1f1918 !important;
+            color: #ffffff !important;
+            border: none !important;
+        }
+
+        /* Page Display Logic */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-white"
+    style="background-color: #ffffff !important; font-family: 'Inter', system-ui, -apple-system, sans-serif !important;">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="javascript:void(0)" onclick="switchPage('home', 'hero')"
+                    class="flex items-center space-x-3 hover:opacity-80 transition">
+                    <img src="./images/bschool.png" alt="SNS B-SPINE Logo" class="h-14 w-auto object-contain" />
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold text-gray-900 leading-tight">SNS B-SPINE</span>
+                        <span class="text-xs text-sns-grey">An Experiential Business (MBA) Programme</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'programs')"
+                        class="text-gray-700 hover:text-sns-yellow transition">Programs</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'spine')"
+                        class="text-gray-700 hover:text-sns-yellow transition">SPINE</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'placements')"
+                        class="text-gray-700 hover:text-sns-yellow transition">Placements</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'cta')"
+                        class="text-gray-700 hover:text-sns-yellow transition">Admission</a>
+                    <a href="javascript:void(0)" onclick="switchPage('admission')"
+                        class="bg-sns-yellow text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition">Apply
+                        Now</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-sns-yellow transition">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+                <div class="px-4 py-4 space-y-3">
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'programs')"
+                        class="block text-gray-700 hover:text-sns-yellow transition py-2">Programs</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'spine')"
+                        class="block text-gray-700 hover:text-sns-yellow transition py-2">SPINE</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'placements')"
+                        class="block text-gray-700 hover:text-sns-yellow transition py-2">Placements</a>
+                    <a href="javascript:void(0)" onclick="switchPage('home', 'cta')"
+                        class="block text-gray-700 hover:text-sns-yellow transition py-2">Admission</a>
+                    <a href="javascript:void(0)" onclick="switchPage('admission')"
+                        class="block bg-sns-yellow text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition text-center">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page Container -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Section -->
+        <section id="hero" class="pt-[148px] pb-20 bg-gradient-to-b from-sns-yellow-light to-sns-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div
+                            class="inline-block bg-sns-yellow/10 border border-sns-yellow/30 px-4 py-2 rounded-full mb-6">
+                            <span class="text-sns-yellow font-semibold">🏆 India's First Design Thinking MBA</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-gray-900"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">
+                            Redesigning <span class="text-sns-yellow">Common Minds</span> Into Business Leaders
+                        </h1>
+
+                        <p class="text-xl text-gray-600 mb-8">
+                            Experience the revolution: Design Thinking × 3P Culture × 5 Pillars × SPINE Infrastructure =
+                            Your Entrepreneurial Future
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="javascript:void(0)" onclick="switchPage('admission')"
+                                class="bg-sns-yellow text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition inline-flex items-center shadow-md">
+                                Apply for MBA 2026
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="javascript:void(0)" onclick="switchPage('home', 'programs')"
+                                class="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-900 hover:text-white transition">
+                                Explore Programs
+                            </a>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-3 gap-2 sm:gap-6 mt-12 pt-12 border-t border-gray-200">
+                            <div>
+                                <div class="text-2xl sm:text-4xl font-bold text-sns-yellow">90%</div>
+                                <div class="text-[10px] sm:text-sm text-gray-600">Placement</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-4xl font-bold text-sns-yellow">45 LPA</div>
+                                <div class="text-[10px] sm:text-sm text-gray-600">Highest</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-4xl font-bold text-sns-yellow">20+</div>
+                                <div class="text-[10px] sm:text-sm text-gray-600">Recruiters</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative h-full min-h-[400px] md:min-h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="./images/image copy.png" alt="Students on Campus"
+                            class="slide absolute inset-0 w-full h-full object-cover">
+                        <img src="./images/Copy of 2 (1).jpg" alt="Campus Life"
+                            class="slide absolute inset-0 w-full h-full object-cover">
+                        <img src="./images/image copy 2.png" alt="Business Leaders"
+                            class="slide absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="flex -space-x-4">
+                                    <img class="w-12 h-12 rounded-full border-2 border-white"
+                                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                                        alt="Student">
+                                    <img class="w-12 h-12 rounded-full border-2 border-white"
+                                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80"
+                                        alt="Student">
+                                    <img class="w-12 h-12 rounded-full border-2 border-white"
+                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80"
+                                        alt="Student">
+                                    <div
+                                        class="w-12 h-12 rounded-full border-2 border-white bg-sns-yellow flex items-center justify-center text-white font-bold text-sm">
+                                        +500</div>
+                                </div>
+                            </div>
+                            <p class="text-white text-lg font-medium">"SNS B-SPINE transformed my career. The Design
+                                Thinking approach is a game changer."</p>
+                            <p class="text-sns-yellow mt-2 font-bold">- Alumni Batch 2024</p>
+                        </div>
+                        <button
+                            class="prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full z-20 transition">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button
+                            class="next absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full z-20 transition">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Mission Section -->
+        <section class="py-12 md:py-20 bg-sns-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-sns-yellow-light p-8 sm:p-12 rounded-3xl border-2 border-sns-yellow/20">
+                        <i class="fas fa-eye text-4xl mb-6 text-sns-yellow"></i>
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Vision</h2>
+                        <p class="text-lg leading-relaxed text-gray-700">
+                            To become an internationally top-ranking business school, focusing on providing quality
+                            education and unique opportunities to harness the knowledge and skills of the students,
+                            enabling with ethical practices and environmental consciousness in the dynamic business
+                            environment.
+                        </p>
+                    </div>
+                    <div class="p-8 sm:p-12 rounded-3xl"
+                        style="background-image: url('https://images.presentationgo.com/2025/07/dark-brushes-background-texture.jpg'); background-size: cover; background-position: center;">
+                        <i class="fas fa-target text-4xl mb-6 text-sns-yellow"></i>
+                        <h2 class="text-3xl font-bold mb-6 text-white"
+                            style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Mission
+                        </h2>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Be a benchmark for the best business schools of the country</span>
+                            </li>
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Create a competitive environment for the students to upgrade their knowledge and
+                                    sharpen their skills</span>
+                            </li>
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Imbibe holistic concern for business ethics and values</span>
+                            </li>
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Inculcate right attitude among students to become worthy citizens</span>
+                            </li>
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Encourage faculty to undertake research and consultancy assignments</span>
+                            </li>
+                            <li class="flex items-start text-gray-200">
+                                <i class="fas fa-check-circle text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                <span> Foster continuous learning with updated/upgraded pedagogical methods</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MBA Program Section -->
+        <section id="programs" class="py-20 bg-sns-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900"
+                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Master of
+                        Business Administration <br class="hidden sm:block"> ( Business
+                        Analytics)</h2>
+                    <p class="text-xl text-gray-600">2-Year Experiential MBA Programme</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Design Thinking Card -->
+                    <div
+                        class="program-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="./images/9.jpg" alt="Design Thinking"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            <div
+                                class="absolute top-4 left-4 bg-sns-yellow text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                Signature</div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900"
+                                style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Design
+                                Thinking Curriculum</h3>
+                            <p class="text-gray-600 mb-6 flex-1">Universally accepted action learning approach. Learn,
+                                collaborate, innovate, and lead through experiential projects.</p>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Real-world problem solving</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Industry collaboration</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-yellow mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Innovation mindset</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Earn While Learn Card -->
+                    <div
+                        class="program-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="./images/Copy of 210.jpg" alt="Earn While Learn"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            <div
+                                class="absolute top-4 left-4 bg-sns-brown text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                Opportunity</div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900"
+                                style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Earn
+                                While Learn</h3>
+                            <p class="text-gray-600 mb-6 flex-1">Paid internships with stipends up to 3.5 LPA. Gain real
+                                business experience while pursuing your MBA.</p>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-brown mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Stipend-based internships</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-brown mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Industry mentorship</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-sns-brown mt-1 mr-3 flex-shrink-0"></i>
+                                    <span>Professional grooming</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Global Immersion Card -->
+                    <div
+                        class="program-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col h-full">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="./images/Copy of 208.jpg" alt="Global Immersion"
+                                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                            <div
+                                class="absolute top-4 left-4 bg-gray-900 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                Specialization</div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900"
+                                style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;"> Second
+                                Year Specialization </h3>
+                            <p class="text-gray-600 mb-6 flex-1">You specialize in your chosen domain to gain deeper
+                                knowledge, real-world exposure, and industry-ready skills aligned with your future
+                                goals.</p>
+                            <ul class="space-y-3 text-sm text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-gray-800 mt-1 mr-3 flex-shrink-0"></i>
+                                    <span><strong>Marketing</strong> – Branding, Digital Strategy & Market Growth</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-gray-800 mt-1 mr-3 flex-shrink-0"></i>
+                                    <span><strong>Human Resources</strong> – Talent Management & Organizational
+                                        Leadership</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-gray-800 mt-1 mr-3 flex-shrink-0"></i>
+                                    <span><strong>Finance</strong> – Investment, Corporate Finance & Financial
+                                        Strategy</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Pillars Section -->
+                <div class="rounded-3xl p-8 sm:p-12 text-white"
+                    style="background-image: url('https://images.unsplash.com/photo-1550684376-efcbd6e3f031'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+                    <h3 class="text-3xl sm:text-4xl font-bold mb-8 text-center"
+                        style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">The 5 Pillars
+                        of Excellence</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 p-3 shadow-lg">
+                                <img src="./images/image.png" alt="CLT" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="font-bold mb-2"
+                                style="font-family: 'Outfit', sans-serif !important; color: #ffffff !important;">
+                                Center For Learning And Teaching</h4>
+                            <p class="text-sm text-gray-400">Design Thinking based Academic Learning.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 p-3 shadow-lg">
+                                <img src="./images/scdlog.png" alt="SCD" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="font-bold mb-2"
+                                style="font-family: 'Outfit', sans-serif !important; color: #ffffff !important;">
+                                Skill And Career Development</h4>
+                            <p class="text-sm text-gray-400">Building Life Skills (Social, Emotional and Cognitive)
+                                through various Clubs.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 p-3 shadow-lg">
+                                <img src="./images/sns-ihub-original.webp" alt="CFC"
+                                    class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="font-bold mb-2"
+                                style="font-family: 'Outfit', sans-serif !important; color: #ffffff !important;">
+                                Centre For Creativity</h4>
+                            <p class="text-sm text-gray-400">Hands-on Experience to Solve Key Industrial Problems
+                                through Latest Technologies.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg overflow-hidden">
+                                <img src="./images/1723099537679.png" alt="IIPC" class="w-full h-full object-cover"
+                                    style="transform: scale(1.4); object-position: center;">
+                            </div>
+                            <h4 class="font-bold mb-2"
+                                style="font-family: 'Outfit', sans-serif !important; color: #ffffff !important;">
+                                Industry Institute Partnership Cell </h4>
+                            <p class="text-sm text-gray-400">Connecting and Learning Business Sense of Top Industries.
+                            </p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 p-3 shadow-lg">
+                                <img src="./images/1707312694431.png" alt="SRI" class="w-full h-full object-contain">
+                            </div>
+                            <h4 class="font-bold mb-2"
+                                style="font-family: 'Outfit', sans-serif !important; color: #ffffff !important;">
+                                Social Responsibility Initiatives</h4>
+                            <p class="text-sm text-gray-400">Giving back to the Society through Social Service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPINE Section -->
+        <section id="spine" class="py-12 md:py-20 bg-sns-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900"
+                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">SPINE: An
+                        Inimitable <span class="text-sns-yellow">Business Lifestyle</span></h2>
+                    <p class="text-xl text-gray-600">World-class facilities for mental & physical wellbeing</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Swimming Pool -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/15.webp" alt="Swimming Pool"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">
+                                Swimming Pool</h3>
+                            <p class="text-sm text-gray-300">Dive into excellence.</p>
+                        </div>
+                    </div>
+                    <!-- Indoor Pitch -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/indoorpitch.jpg" alt="Indoor Pitch"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Indoor
+                                Pitch</h3>
+                            <p class="text-sm text-gray-300">All-weather sports.</p>
+                        </div>
+                    </div>
+                    <!-- Gym -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/gym.jpg" alt="Fitness Gym"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Fitness
+                                Gym</h3>
+                            <p class="text-sm text-gray-300">Train hard, shape up.</p>
+                        </div>
+                    </div>
+                    <!-- Gaming -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/gaming.jpg" alt="Gaming Center"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Gaming
+                                Center</h3>
+                            <p class="text-sm text-gray-300">Innovation through play.</p>
+                        </div>
+                    </div>
+                    <!-- Mini Theatre -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/image copy 3.png" alt="Mini Theatre"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Mini
+                                Theatre</h3>
+                            <p class="text-sm text-gray-300">Entertainment redefined.</p>
+                        </div>
+                    </div>
+                    <!-- Music Studio -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/10 (1).jpg" alt="Music Studio"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Music
+                                Studio</h3>
+                            <p class="text-sm text-gray-300">Fuel your soul.</p>
+                        </div>
+                    </div>
+                    <!-- Dance Studio -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/8.jpg" alt="Dance Studio"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Dance
+                                Studio</h3>
+                            <p class="text-sm text-gray-300">Art meets innovation.</p>
+                        </div>
+                    </div>
+                    <!-- Connection Lounge -->
+                    <div class="group relative overflow-hidden rounded-2xl h-80 shadow-lg">
+                        <img src="./images/Copy of 2 (1).jpg" alt="Connection Lounge"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 z-10 text-white">
+                            <h3 class="text-2xl font-bold mb-1"
+                                style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">
+                                Connection Lounge</h3>
+                            <p class="text-sm text-gray-300">Network and relax.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placements Section -->
+        <section id="placements" class="py-12 md:py-20 bg-sns-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900"
+                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Stellar <span
+                            class="text-sns-yellow">Placements</span></h2>
+                    <p class="text-xl text-gray-600">90% Placement Record with Top Recruiters</p>
+                </div>
+
+                <!-- Placement Stats -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-16">
+                    <div
+                        class="stat-card bg-sns-yellow-light p-6 sm:p-8 rounded-3xl text-center shadow-sm border border-sns-yellow/20 flex flex-col justify-center min-h-[180px]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl font-bold text-sns-yellow mb-2">90%</div>
+                        <div class="text-base sm:text-lg md:text-xl font-bold text-gray-800 leading-tight">Placement
+                        </div>
+                    </div>
+                    <div
+                        class="stat-card bg-sns-yellow-light p-6 sm:p-8 rounded-3xl text-center shadow-sm border border-sns-yellow/20 flex flex-col justify-center min-h-[180px]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl font-bold text-sns-yellow mb-2">45</div>
+                        <div class="text-base sm:text-lg md:text-xl font-bold text-gray-800 leading-tight">
+                            LPA Highest</div>
+                    </div>
+                    <div
+                        class="stat-card bg-sns-yellow-light p-6 sm:p-8 rounded-3xl text-center shadow-sm border border-sns-yellow/20 flex flex-col justify-center min-h-[180px]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl font-bold text-sns-yellow mb-2">3.5</div>
+                        <div class="text-base sm:text-lg md:text-xl font-bold text-gray-800 leading-tight">
+                            LPA Internship</div>
+                    </div>
+                    <div
+                        class="stat-card bg-sns-yellow-light p-6 sm:p-8 rounded-3xl text-center shadow-sm border border-sns-yellow/20 flex flex-col justify-center min-h-[180px]">
+                        <div class="text-4xl sm:text-5xl md:text-6xl font-bold text-sns-yellow mb-2">20+</div>
+                        <div class="text-base sm:text-lg md:text-xl font-bold text-gray-800 leading-tight">Recruiters
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Recruiters (Infinite Scroll) -->
+                <!-- SNS B-SPINE Top Recruiters Block -->
+                <div id="sns-recruiters-root">
+                    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+                        rel="stylesheet">
+                    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+                        rel="stylesheet">
+
+                    <style>
+                        #sns-recruiters-root {
+                            font-family: 'Outfit', sans-serif;
+                            margin: 20px 0;
+                            overflow: hidden;
+                        }
+
+                        .sns-recruiters-container {
+                            background-color: #1f2937;
+                            /* Gray-800 */
+                            background-image: url('https://images.unsplash.com/photo-1550684376-efcbd6e3f031');
+                            background-size: cover;
+                            background-position: center;
+                            background-blend-mode: overlay;
+                            padding: 40px 20px;
+                            border-radius: 24px;
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            text-align: center;
+                        }
+
+                        .sns-recruiters-title {
+                            color: #ffffff;
+                            font-size: 28px;
+                            font-weight: 700;
+                            margin-bottom: 30px;
+                            text-transform: none;
+                        }
+
+                        .sns-carousel-mask {
+                            position: relative;
+                            overflow: hidden;
+                            width: 100%;
+                            height: 100px;
+                            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                        }
+
+                        .sns-scroll-track {
+                            display: flex;
+                            align-items: center;
+                            gap: 24px;
+                            width: max-content;
+                            animation: sns-scroll-anim 40s linear infinite;
+                        }
+
+                        .sns-scroll-track:hover {
+                            animation-play-state: paused;
+                        }
+
+                        .sns-logo-item {
+                            width: 160px;
+                            height: 80px;
+                            flex-shrink: 0;
+                            background: white;
+                            border-radius: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-center;
+                            padding: 12px;
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        }
+
+                        .sns-logo-item img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            object-fit: contain;
+                        }
+
+                        @keyframes sns-scroll-anim {
+                            0% {
+                                transform: translateX(0);
+                            }
+
+                            100% {
+                                transform: translateX(calc(-160px * 10 - 24px * 10));
+                            }
+                        }
+                    </style>
+
+                    <div class="sns-recruiters-container">
+                        <h3 class="sns-recruiters-title">Top Recruiters</h3>
+                        <div class="sns-carousel-mask">
+                            <div class="sns-scroll-track">
+                                <!-- Set 1 -->
+                                <div class="sns-logo-item"><img
+                                        src="https://photos.velzx.com/wp-content/uploads/2026/02/Amazon_logo.png"
+                                        alt="Cognizant"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Jaro_Education_Logo.png"
+                                        alt="Jaro"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://blog.logomaster.ai/hs-fs/hubfs/ibm-logo-2.jpg?width=672&height=448&name=ibm-logo-2.jpg"
+                                        alt="IBM"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/960px-Infosys_logo.svg.png"
+                                        alt="Infosys"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tata_Consultancy_Services_old_logo.svg/960px-Tata_Consultancy_Services_old_logo.svg.png"
+                                        alt="TCS"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wipro_Primary_Logo_Color_RGB.svg/1280px-Wipro_Primary_Logo_Color_RGB.svg.png"
+                                        alt="Wipro"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://i.pinimg.com/736x/a4/90/79/a490795ee21746ab18485b2fedb87b80.jpg"
+                                        alt="Deloitte"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://1000logos.net/wp-content/uploads/2021/12/Accenture-logo.jpg"
+                                        alt="Accenture"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsy5z_xdAg28SwbkWx2rkcppOSRkBNige6Iw&s"
+                                        alt="Zoho"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/960px-Amazon_logo.svg.png"
+                                        alt="Amazon"></div>
+
+                                <!-- Set 2 (Duplicate for loop) -->
+                                <div class="sns-logo-item"><img
+                                        src="https://news.cognizant.com/image/cognizant-new-logo-400px.jpg"
+                                        alt="Cognizant"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Jaro_Education_Logo.png"
+                                        alt="Jaro"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://blog.logomaster.ai/hs-fs/hubfs/ibm-logo-2.jpg?width=672&height=448&name=ibm-logo-2.jpg"
+                                        alt="IBM"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/960px-Infosys_logo.svg.png"
+                                        alt="Infosys"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tata_Consultancy_Services_old_logo.svg/960px-Tata_Consultancy_Services_old_logo.svg.png"
+                                        alt="TCS"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wipro_Primary_Logo_Color_RGB.svg/1280px-Wipro_Primary_Logo_Color_RGB.svg.png"
+                                        alt="Wipro"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://i.pinimg.com/736x/a4/90/79/a490795ee21746ab18485b2fedb87b80.jpg"
+                                        alt="Deloitte"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://1000logos.net/wp-content/uploads/2021/12/Accenture-logo.jpg"
+                                        alt="Accenture"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsy5z_xdAg28SwbkWx2rkcppOSRkBNige6Iw&s"
+                                        alt="Zoho"></div>
+                                <div class="sns-logo-item"><img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/960px-Amazon_logo.svg.png"
+                                        alt="Amazon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- 3P Culture Section -->
+        <section class="py-12 md:py-20 bg-sns-yellow-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900"
+                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">The 3P Culture
+                        Framework</h2>
+                    <p class="text-xl text-gray-700">Purpose × Process × People = Excellence</p>
+                </div>
+                <!-- ... Content ... -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-sns-yellow/30">
+                        <div class="w-20 h-20 bg-sns-yellow rounded-xl flex items-center justify-center mb-6"><i
+                                class="fas fa-bullseye text-4xl text-white"></i></div>
+                        <h3 class="text-3xl font-bold mb-4 text-gray-900"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Purpose
+                        </h3>
+                        <p class="text-lg text-gray-700">Building entrepreneurial mindset using design thinking.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-sns-yellow/30">
+                        <div class="w-20 h-20 bg-sns-brown rounded-xl flex items-center justify-center mb-6"><i
+                                class="fas fa-cogs text-4xl text-white"></i></div>
+                        <h3 class="text-3xl font-bold mb-4 text-gray-900"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Process
+                        </h3>
+                        <p class="text-lg text-gray-700">Experiential learning through design thinking methodology.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-sns-yellow/30">
+                        <div class="w-20 h-20 bg-gray-800 rounded-xl flex items-center justify-center mb-6"><i
+                                class="fas fa-users text-4xl text-white"></i></div>
+                        <h3 class="text-3xl font-bold mb-4 text-gray-900"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">People</h3>
+                        <p class="text-lg text-gray-700">Industry mentors, international partners, and peer learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="py-12 md:py-24 bg-[#0a111a] text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6"
+                    style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Ready to Redesign
+                    Your Future?</h2>
+                <p class="text-xl text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed">Join India's first Design
+                    Thinking based MBA programme. Limited seats available for 2026.</p>
+
+                <div
+                    class="bg-white/5 backdrop-blur-xl p-8 md:p-16 rounded-[40px] border border-white/10 mb-16 shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-12 md:gap-20 text-left mb-12">
+                        <!-- Eligibility -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-sns-yellow mb-8"
+                                style="font-family: 'Outfit', sans-serif !important;">Eligibility</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    Any Bachelor's degree
+                                </li>
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    Minimum 50% aggregate
+                                </li>
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    Valid entrance exam score
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Programme -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-sns-yellow mb-8"
+                                style="font-family: 'Outfit', sans-serif !important;">Programme</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    2-year full-time MBA
+                                </li>
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    Anna University affiliated
+                                </li>
+                                <li class="flex items-center text-lg text-gray-200">
+                                    <i class="fas fa-check-circle text-sns-yellow mr-4 text-xl"></i>
+                                    AICTE approved
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="javascript:void(0)" onclick="switchPage('admission')"
+                        class="inline-flex items-center justify-center bg-sns-yellow text-white px-10 md:px-16 py-5 rounded-full font-bold text-lg md:text-xl hover:bg-yellow-500 transition-all transform hover:scale-105 shadow-[0_10px_30px_rgba(244,180,0,0.3)] whitespace-nowrap">
+                        <i class="fas fa-envelope mr-3"></i>Apply Now - Admission 2026
+                    </a>
+                </div>
+
+                <div class="text-center pt-8 border-t border-white/5">
+                    <p class="text-gray-500 font-medium mb-6 tracking-wide">Supporting PM Initiatives</p>
+                    <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-gray-400 font-medium">
+                        <span class="hover:text-white transition cursor-default">Make in India</span>
+                        <span class="text-white/20">•</span>
+                        <span class="hover:text-white transition cursor-default">Digital India</span>
+                        <span class="text-white/20">•</span>
+                        <span class="hover:text-white transition cursor-default">Fit India</span>
+                        <span class="text-white/20">•</span>
+                        <span class="hover:text-white transition cursor-default">Skill India</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Admission Page Container -->
+    <div id="admission-page" class="page-content">
+        <!-- Page Header -->
+        <section class="pt-32 pb-16 bg-gradient-to-r from-sns-yellow to-orange-400 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+                    style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Contact Us & Apply
+                </h1>
+                <p class="text-xl opacity-90">Start your journey with us today.</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12 md:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                    <!-- Left Column -->
+                    <div>
+                        <h2 class="text-3xl font-bold mb-10 text-gray-900 border-b-2 border-sns-yellow pb-2 inline-block"
+                            style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">Get In
+                            Touch</h2>
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-sns-yellow/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-sns-yellow text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2"
+                                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">
+                                        Address</h3>
+                                    <p class="text-gray-600 leading-relaxed">SNS Kalvi Nagar, Sathy Main Road
+                                        ,Kurumbapalayam (Po),<br>S.S.Kulam (via), Coimbatore - 641 107.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-sns-yellow/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-sns-yellow text-xl"
+                                        style="transform: scaleX(-1); display: inline-block;"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2"
+                                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">
+                                        Phone</h3>
+                                    <p class="text-gray-600">Mobile Number: <a href="tel:+917530093731"
+                                            class="hover:text-sns-yellow">+91 75300 93731</a></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-sns-yellow/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-sns-yellow text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2"
+                                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">
+                                        Email</h3>
+                                    <p class="text-gray-600">General: <a href="mailto:office@snsbschool.in"
+                                            class="hover:text-sns-yellow">office@snsbschool.in</a><br>Career: <a
+                                            href="mailto:job@snsgroups.com"
+                                            class="hover:text-sns-yellow">job@snsgroups.com</a></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-sns-yellow/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-sns-yellow text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2"
+                                        style="color: #111827 !important; font-family: 'Outfit', sans-serif !important;">
+                                        Visit Us</h3>
+                                    <p class="text-gray-600">Monday - Saturday: 9:00 AM - 5:00 PM<br></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Bitrix Form) -->
+                    <div>
+                        <div class="bg-white p-2 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.1)] border border-gray-100">
+                            <div class="p-8 border-2 border-black rounded-xl">
+                                <!-- Bitrix Form -->
+                                <script data-b24-form="inline/303/9x16uk" data-skip-moving="true">
+                                        (function (w, d, u) {
+                                            var s = d.createElement('script'); s.async = true; s.src = u + '?' + (Date.now() / 180000 | 0);
+                                            var h = d.getElementsByTagName('script')[0]; h.parentNode.insertBefore(s, h);
+                                        })(window, document, 'https://cdn.bitrix24.com/b11752903/crm/form/loader_303.js');
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://snsct.snscourseware.org/images/ctimg/bschool.png" alt="SNS B-SPINE Logo"
+                            class="h-12 w-auto object-contain" />
+                        <div class="flex flex-col">
+                            <span class="text-xl font-bold text-sns-yellow leading-tight">SNS B-SPINE</span>
+                            <span class="text-xs text-gray-400">An Experiential Business (MBA) Programme</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/snsinstitutions" target="_blank"
+                            class="w-10 h-10 bg-sns-yellow rounded-full flex items-center justify-center hover:bg-yellow-500 transition">
+                            <i class="fab fa-facebook-f text-black"></i>
+                        </a>
+                        <a href="https://x.com/snsinstitutions" target="_blank"
+                            class="w-10 h-10 bg-sns-yellow rounded-full flex items-center justify-center hover:bg-yellow-500 transition">
+                            <i class="fab fa-twitter text-black"></i>
+                        </a>
+                        <a href="https://www.instagram.com/snsinstitutions/" target="_blank"
+                            class="w-10 h-10 bg-sns-yellow rounded-full flex items-center justify-center hover:bg-yellow-500 transition">
+                            <i class="fab fa-instagram text-black"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/school/snsinstitutions/" target="_blank"
+                            class="w-10 h-10 bg-sns-yellow rounded-full flex items-center justify-center hover:bg-yellow-500 transition">
+                            <i class="fab fa-linkedin-in text-black"></i>
+                        </a>
+                        <a href="https://www.youtube.com/c/snsinstitutions" target="_blank"
+                            class="w-10 h-10 bg-sns-yellow rounded-full flex items-center justify-center hover:bg-yellow-500 transition">
+                            <i class="fab fa-youtube text-black"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4"
+                        style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Quick Links
+                    </h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="javascript:void(0)" onclick="switchPage('home', 'programs')"
+                                class="hover:text-sns-yellow transition">Programs</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchPage('home', 'spine')"
+                                class="hover:text-sns-yellow transition">Spine</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchPage('home', 'placements')"
+                                class="hover:text-sns-yellow transition">Placements</a></li>
+                        <li><a href="javascript:void(0)" onclick="switchPage('home', 'cta')"
+                                class="hover:text-sns-yellow transition">Admission</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4"
+                        style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://snsihub.ai/" target="_blank" class="hover:text-sns-yellow transition">SNS
+                                iHub</a></li>
+                        <li><a href="https://snsalumni.in/" target="_blank" class="hover:text-sns-yellow transition">SNS
+                                Alumni</a></li>
+                        <li><a href="https://snsspine.in/" target="_blank" class="hover:text-sns-yellow transition">SNS
+                                Spine</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4"
+                        style="color: #ffffff !important; font-family: 'Outfit', sans-serif !important;">Contact Us</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-sns-yellow mt-1 mr-3"></i>
+                            <span class="text-sm">Address: SNS Kalvi Nagar, Sathy Main Road,
+                                Kurumbapalayam (Po), S.S.Kulam (via), Coimbatore – 641 107.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-sns-yellow mr-3"></i>
+                            <span class="text-sm">Mobile Number: <a href="tel:+917530093731"
+                                    class="hover:text-sns-yellow transition">+91 75300 93731</a></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-sns-yellow mr-3"></i>
+                            <span class="text-sm">Email: <a href="mailto:office@snsbschool.in"
+                                    class="hover:text-sns-yellow transition">office@snsbschool.in</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                <p>© 2026 SNS B-SPINE. All rights reserved.</p>
+                <p><span class="text-sns-yellow font-bold">SNS Core Value:</span> Sincerity, Nobility, Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page switching logic
+        function switchPage(pageId, sectionId = null) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show target page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Scroll to section if provided
+            if (sectionId) {
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) { mobileMenu.classList.add('hidden'); }
+        }
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Hero slider
+        const heroSlides = document.querySelectorAll('#hero .slide');
+        let heroCurrent = 0;
+        function showHeroSlide(index) {
+            heroSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+        function nextHeroSlide() {
+            heroCurrent = (heroCurrent + 1) % heroSlides.length;
+            showHeroSlide(heroCurrent);
+        }
+        if (heroSlides.length > 0) {
+            setInterval(nextHeroSlide, 3000);
+            showHeroSlide(heroCurrent);
+        }
+
+        // Bitrix Form Placeholders
+        function applyBitrixPlaceholders() {
+            document.querySelectorAll('.b24-form-field').forEach(function (field) {
+                const label = field.querySelector('.b24-form-control-label');
+                const input = field.querySelector('.b24-form-control');
+                if (!label || !input) return;
+                let text = label.textContent.replace(/\s*\*$/, '').trim();
+                let required = label.textContent.includes('*');
+                input.setAttribute('placeholder', required ? text + ' *' : text);
+            });
+        }
+        setTimeout(applyBitrixPlaceholders, 1500);
+        new MutationObserver(applyBitrixPlaceholders).observe(document.body, { childList: true, subtree: true });
+    </script>
+
+    <a href="https://wa.me/919566423456" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/snsinstitutions/" class="insta-float" target="_blank"><i
+            class="fab fa-instagram"></i></a>
+</body>
+
+</html>
